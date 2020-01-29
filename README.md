@@ -6,7 +6,7 @@ GPL-3.0
 ## Description
 Allow to geocode data provided by [John Hopkins University](https://systems.jhu.edu/) CSSE :
 
-https://docs.google.com/spreadsheets/d/1yZv9w9zRKwrGTaR-YzmAqMefw4wMlaXocejdxZaTs6w/export?format=csv
+https://docs.google.com/spreadsheets/d/1yZv9w9zRKwrGTaR-YzmAqMefw4wMlaXocejdxZaTs6w/
 
 Use loop to get location from Nominatim API :
 
