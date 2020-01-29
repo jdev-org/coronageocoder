@@ -4,10 +4,12 @@
 GPL-3.0
 
 ## Description
-Allow to geocode John Hopkins data : 
+Allow to geocode data provided by [John Hopkins University](https://systems.jhu.edu/) CSSE :
+
 https://docs.google.com/spreadsheets/d/1yZv9w9zRKwrGTaR-YzmAqMefw4wMlaXocejdxZaTs6w/export?format=csv
 
 Use loop to get location from Nominatim API :
+
 https://nominatim.openstreetmap.org/
 
 Nominatim is free and open source !
