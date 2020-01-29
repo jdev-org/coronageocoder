@@ -1,4 +1,4 @@
-# coronageocoder
+# Corona Geocoder
 
 ## LICENCE
 GPL-3.0
