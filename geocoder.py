@@ -1,3 +1,12 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+# version: 1.0
+# licence : gpl-3.0 or superior
+# author: Gaetan Bruel
+# email: gaetan.bruel@jdev.fr
+# date: 29/01/2020
+# description : a geocoder according to this data https://docs.google.com/spreadsheets/d/1yZv9w9zRKwrGTaR-YzmAqMefw4wMlaXocejdxZaTs6w 
+
 from geopy.geocoders import Nominatim
 import urllib.request
 import csv
@@ -9,7 +18,8 @@ outpathCsv = OUTPUTCSV
 outputPathJson = OUTPUTJSON
 urllib.request.urlretrieve(URL, INPUTFILE)
 
-# geocode csv# source: #https: //blog.adrienvh.fr/2015/01/18/geocoder-en-masse-plusieurs-milliers-dadresses-avec-python-et-nominatim/
+# geocode csv
+# Inspired by https://blog.adrienvh.fr/
 
 geocoder = Nominatim()
 inputFile = open(INPUTFILE, 'rt')
@@ -44,7 +54,7 @@ try:
       # prepare json data to append
       geometry = {
         'type':'Point',
-        'coordinates': [location.latitude, location.longitude]
+        'coordinates': [location.longitude, location.latitude]
       }
       properties = {
         'location': adresse,
