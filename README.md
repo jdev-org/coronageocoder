@@ -37,3 +37,6 @@ sudo apt install python3-pip
 pip install geopy
 ```
 https://geopy.readthedocs.io/en/stable/#geopy-2-0
+
+## Time support in GeoServer
+https://docs.geoserver.org/stable/en/user/services/wms/time.html
