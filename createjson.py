@@ -14,9 +14,7 @@ from geopy.geocoders import Nominatim
 from config import *
 import urllib.request
 
-PATH = getcwd()+'/data'
-OUTPUT = getcwd()+'/result/test.geojson'
-outpathCsv = OUTPUTCSV
+PATH = getcwd() + DATAPATH
 n = 1 
 
 ##
@@ -109,7 +107,7 @@ print('GEOCODE FILE >>>>')
 csvToJson(INPUTFILE, ',')
 
 # export json to file
-with open(OUTPUT, 'w') as outfile:
+with open(OUTPUTJSON, 'w') as outfile:
   json.dump(outJson, outfile)
 
 print('END SCRIPT >>>>')
