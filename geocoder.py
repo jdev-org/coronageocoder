@@ -11,12 +11,13 @@ from geopy.geocoders import Nominatim
 import urllib.request
 import csv, json
 from config import *
-from datetime import datetime 
+from datetime import datetime
+import sys
 
 print('DOWNLOAD CSV >>>>>>>>>>>')
 outpathCsv = OUTPUTCSV
 outputPathJson = OUTPUTJSON
-urllib.request.urlretrieve(URL, INPUTFILE)
+urllib.request.urlretrieve(sys.argv[1], INPUTFILE)
 
 # geocode csv
 # Inspired by https://blog.adrienvh.fr/
@@ -84,4 +85,4 @@ finally:
   print('CLOSE FILES >>>>>>>>>>>')
   inputFile.close()
   outputFile.close()
-  print('END SCRIPT >>>>>>>>>>> SUCCESS')
+  print('END SCRIPT >>>>>>>>>>>')
