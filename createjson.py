@@ -19,18 +19,27 @@ OUTPUT = getcwd()+'/result/test.geojson'
 outpathCsv = OUTPUTCSV
 n = 1 
 
-def geocode(adresse):
+##
+# use geocoder to get XY fro address
+# #
+def geocode(address):
   geocoder = Nominatim()
   # geocode
-  location = geocoder.geocode(adresse, True, 30)
+  location = geocoder.geocode(address, True, 30)
   return location
 
+##
+# create simple geojson base
+# #
 def createJson():
   json = {}
   json['type'] = 'FeatureCollection'
   json['features'] = []
   return json
 
+##
+# create json properties from feature infos
+# #
 def locationToJson(line, location, colNames):
   i = 0
   properties = {}
@@ -53,6 +62,9 @@ def locationToJson(line, location, colNames):
   }
   return feature
 
+##
+# from line, get location
+# #
 def getLocation(line) :
   # clean adress
   adresse = ''
@@ -66,7 +78,9 @@ def getLocation(line) :
   # create feature for json
   return location
 
-# add updated data to json
+##
+# read and convert csv feature to geojson
+# #
 def csvToJson(fPath, delimiter):
   inputFile = open(fPath, 'rt')      
   inputData = csv.reader(inputFile, delimiter = delimiter)
@@ -88,6 +102,7 @@ for f in listdir(PATH):
       print(inst)
     n = n + 1
 
+# parse file from web
 print('GET CSV FROM WEB >>>>')
 urllib.request.urlretrieve(URL, INPUTFILE)
 print('GEOCODE FILE >>>>')
