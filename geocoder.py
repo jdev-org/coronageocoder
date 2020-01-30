@@ -11,6 +11,7 @@ from geopy.geocoders import Nominatim
 import urllib.request
 import csv
 from config import *
+import json
 
 print('DOWNLOAD CSV >>>>>>>>>>>')
 outpathCsv = OUTPUTCSV
@@ -23,7 +24,6 @@ urllib.request.urlretrieve(URL, INPUTFILE)
 geocoder = Nominatim()
 inputFile = open(INPUTFILE, 'rt')
 outputFile = open(OUTPUTCSV, 'w')
-import json
 
 # create base method to create json
 def createJson():
