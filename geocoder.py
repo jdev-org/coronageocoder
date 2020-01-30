@@ -9,9 +9,9 @@
 
 from geopy.geocoders import Nominatim
 import urllib.request
-import csv
+import csv, json
 from config import *
-import json
+from datetime import datetime 
 
 print('DOWNLOAD CSV >>>>>>>>>>>')
 outpathCsv = OUTPUTCSV
@@ -41,19 +41,21 @@ try:
   next(inputData)
   # init json
   data = createJson()
+  print('PREPARE FILES >>>>>>>>>>>')
   for line in inputData:
     if line[0] and line[1]:
       adresse = line[0] + ", " + line[1]
     elif line[1]:
       adresse = line[1]
     try:
-      print('GEOCODE >>>>>>>>>>>')
       cleanAdresse = adresse.replace('Mainland China', 'China')
       location = geocoder.geocode(cleanAdresse, True, 30)
       # add line to csv
-      print('CREATE CSV >>>>>>>>>>>')
-      outputData.writerow((line[0],line[1],line[2],line[3],line[4],line[5], location.latitude, location.longitude))
-      print('CREATE JSON >>>>>>>>>>>')
+      date = line[2]
+      date = datetime.strptime('01/29/2020 21:00', '%m/%d/%Y %H:%M').strftime('%Y-%m-%dT%H:%M%S.%f')
+      date = date[:-3]+'Z'
+
+      outputData.writerow((line[0], line[1], date, line[3], line[4], line[5], location.latitude, location.longitude))
       # prepare json data to append
       geometry = {
         'type':'Point',
@@ -61,7 +63,7 @@ try:
       }
       properties = {
         'location': adresse,
-        'update': line[2],
+        'date': date,
         'confirmed': line[3],
         'deaths': line[4],
         'recovered': line[5]
@@ -79,5 +81,7 @@ try:
     json.dump(data, outfile)
 
 finally:
+  print('CLOSE FILES >>>>>>>>>>>')
   inputFile.close()
   outputFile.close()
+  print('END SCRIPT >>>>>>>>>>> SUCCESS')
