@@ -12,8 +12,7 @@ import urllib.request
 import csv
 from config import *
 
-# get file
-print('Beginning file download with urllib2...')
+print('DOWNLOAD CSV >>>>>>>>>>>')
 outpathCsv = OUTPUTCSV
 outputPathJson = OUTPUTJSON
 urllib.request.urlretrieve(URL, INPUTFILE)
@@ -34,6 +33,7 @@ def createJson():
   return data
 
 try:
+  print('READ CSV FILE >>>>>>>>>>>')
   outputData = csv.writer(outputFile, delimiter = ',', lineterminator = '\n')
   outputData.writerow(('adresse', 'latitude', 'longitude'))
   inputData = csv.reader(inputFile, delimiter = ',')
@@ -47,10 +47,13 @@ try:
     elif line[1]:
       adresse = line[1]
     try:
+      print('GEOCODE >>>>>>>>>>>')
       cleanAdresse = adresse.replace('Mainland China', 'China')
       location = geocoder.geocode(cleanAdresse, True, 30)
       # add line to csv
+      print('CREATE CSV >>>>>>>>>>>')
       outputData.writerow((line[0],line[1],line[2],line[3],line[4],line[5], location.latitude, location.longitude))
+      print('CREATE JSON >>>>>>>>>>>')
       # prepare json data to append
       geometry = {
         'type':'Point',
