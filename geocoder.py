@@ -17,7 +17,9 @@ import sys
 print('DOWNLOAD CSV >>>>>>>>>>>')
 outpathCsv = OUTPUTCSV
 outputPathJson = OUTPUTJSON
-urllib.request.urlretrieve(sys.argv[1], INPUTFILE)
+URL = sys.argv[1]
+DELIMITER = sys.argv[2]
+urllib.request.urlretrieve(URL, INPUTFILE)
 
 # geocode csv
 # Inspired by https://blog.adrienvh.fr/
@@ -37,7 +39,7 @@ try:
   print('READ CSV FILE >>>>>>>>>>>')
   outputData = csv.writer(outputFile, delimiter = ',', lineterminator = '\n')
   outputData.writerow(('adresse', 'latitude', 'longitude'))
-  inputData = csv.reader(inputFile, delimiter = ',')
+  inputData = csv.reader(inputFile, delimiter = DELIMITER)
   # ignore first line
   next(inputData)
   # init json
