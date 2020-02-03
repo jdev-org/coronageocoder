@@ -17,7 +17,6 @@ from config import *
 from datetime import datetime
 import sys
 
-print('DOWNLOAD CSV >>>>>>>>>>>')
 outpathCsv = OUTPUTCSV
 outputPathJson = OUTPUTJSON
 URL = sys.argv[1]
@@ -39,7 +38,6 @@ def createJson():
   return data
 
 try:
-  print('READ CSV FILE >>>>>>>>>>>')
   outputData = csv.writer(outputFile, delimiter = ',', lineterminator = '\n')
   outputData.writerow(('state','country','date','confirmed','deaths','recovered', 'latitude', 'longitude'))
   inputData = csv.reader(inputFile, delimiter = DELIMITER)
@@ -47,7 +45,6 @@ try:
   next(inputData)
   # init json
   data = createJson()
-  print('PREPARE FILES >>>>>>>>>>>')
   for line in inputData:
     if line[0] and line[1]:
       adresse = line[0] + ", " + line[1]
@@ -94,10 +91,7 @@ try:
     json.dump(data, outfile)
 
 finally:
-  print('CLOSE FILES >>>>>>>>>>>')
   inputFile.close()
   outputFile.close()
-  print('END SCRIPT >>>>>>>>>>>')
   exitValue = datetime.now().strftime('%Y-%m-%dT%H:%M%S.%f')[:-3]+'Z'
-  print('RETURN  >>>>>>>>>>>')
-  sys.exit(exitValue)
+  print(exitValue)

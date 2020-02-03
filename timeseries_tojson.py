@@ -15,7 +15,6 @@ from datetime import datetime
 import sys
 
 
-print('DOWNLOAD CSV >>>>>>>>>>>')
 outpathCsv = OUTPUTCSV
 outputPathJson = OUTPUTJSON
 DELIMITER = sys.argv[2]
@@ -81,7 +80,6 @@ try:
   outputData = csv.writer(outputFile, delimiter = DELIMITER, lineterminator = '\n')
   # csv header
   outputData.writerow(('state', 'country', 'long', 'lat', 'date', 'confirmed'))
-  print('CSV FILE >>>>>>>>>>>')
   for line in inputData:
       # CSV
       i = 0
@@ -95,7 +93,6 @@ try:
       jsonFeatures = createJsonFeatures(line, colNames)
       for feature in jsonFeatures:
         jsonData['features'].append(feature)
-  print('JSON FILE >>>>>>>>>>>')
   with open(OUTPUTJSON, 'w') as outfile:
     json.dump(jsonData, outfile)      
     
@@ -104,10 +101,7 @@ except Exception as inst:
   finalMsg = 'ERROR'
 
 finally:
-  print('CLOSE FILES >>>>>>>>>>>')
   inputFile.close()
   outputFile.close()
-  print('END SCRIPT WITH ' + finalMsg + ' >>>>>>>>>>>')
   exitValue = datetime.now().strftime('%Y-%m-%dT%H:%M%S.%f')[:-3]+'Z'
-  print('RETURN  >>>>>>>>>>>')
-  sys.exit(exitValue)
+  print(exitValue)
