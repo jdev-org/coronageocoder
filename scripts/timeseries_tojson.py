@@ -77,7 +77,7 @@ try:
   inputData = csv.reader(inputFile, delimiter = DELIMITER)
   colNames = next(inputData)
   # prepare output csv file
-  outputData = csv.writer(outputFile, delimiter = DELIMITER, lineterminator = '\n')
+  outputData = csv.writer(outputFile, delimiter = ';', lineterminator = '\n')
   # csv header
   outputData.writerow(('state', 'country', 'long', 'lat', 'date', 'confirmed'))
   for line in inputData:
