@@ -103,5 +103,5 @@ except Exception as inst:
 finally:
   inputFile.close()
   outputFile.close()
-  exitValue = datetime.now().strftime('%Y-%m-%dT%H:%M%S.%f')[:-3]+'Z'
+  exitValue = datetime.now().strftime('%Y-%m-%d')
   print(exitValue)
