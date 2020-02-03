@@ -22,7 +22,6 @@ outpathCsv = OUTPUTCSV
 outputPathJson = OUTPUTJSON
 URL = sys.argv[1]
 DELIMITER = sys.argv[2]
-HOUR_FORMAT = sys.argv[3] #I or H
 urllib.request.urlretrieve(URL, INPUTFILE)
 
 # geocode csv
@@ -42,7 +41,7 @@ def createJson():
 try:
   print('READ CSV FILE >>>>>>>>>>>')
   outputData = csv.writer(outputFile, delimiter = ',', lineterminator = '\n')
-  outputData.writerow(('adresse', 'latitude', 'longitude'))
+  outputData.writerow(('state','country','date','confirmed','deaths','recovered', 'latitude', 'longitude'))
   inputData = csv.reader(inputFile, delimiter = DELIMITER)
   # ignore first line
   next(inputData)
@@ -59,7 +58,14 @@ try:
       location = geocoder.geocode(cleanAdresse, True, 30)
       # add line to csv
       date = line[2]
-      date = datetime.strptime(date, '%m/%d/%Y %' + HOUR_FORMAT + ':%M %p').strftime('%Y-%m-%dT%H:%M%S.%f')
+      formatDate = '%m/%d/%Y %H:%M'
+      ampm = date[-2:].upper()
+      if ampm == 'AM' or ampm == 'PM':
+        formatDate += ' %p'  
+      date = datetime.strptime(date, formatDate)
+      if date.hour == 12 and ampm == 'AM':
+            date.hour = '00'
+      date = date.strftime('%Y-%m-%dT%H:%M%S.%f')
       date = date[:-3]+'Z'
 
       outputData.writerow((line[0], line[1], date, line[3], line[4], line[5], location.latitude, location.longitude))

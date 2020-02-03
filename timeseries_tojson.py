@@ -19,8 +19,8 @@ import sys
 print('DOWNLOAD CSV >>>>>>>>>>>')
 outpathCsv = OUTPUTCSV
 outputPathJson = OUTPUTJSON
-DELIMITER = sys.argv[2]
-HOUR_FORMAT = sys.argv[3] #I or H
+#DELIMITER = sys.argv[2]
+DELIMITER = ','
 finalMsg = 'NO ERROR'
 
 # create base method to create json
@@ -30,6 +30,17 @@ def createJson():
   data['features'] = []
   return data
 
+def reformatDate(value):
+  formatDate = '%m/%d/%Y %I:%M'
+  ampm = value[-2:].upper()
+  if ampm == 'AM' or ampm == 'PM':
+    formatDate += ' %p'  
+  date = datetime.strptime(value, formatDate)
+  if date.hour == 12 and ampm == 'AM':
+        date.hour = '00'
+  date = date.strftime('%Y-%m-%dT%H:%M%S.%f')
+  date = date[:-3] + 'Z'
+  return date
 
 # line to json
 def createJsonFeatures(line, colNames):
@@ -46,9 +57,7 @@ def createJsonFeatures(line, colNames):
   i = 0
   for cell in line:
       if(i >= 6):
-        date = datetime.strptime(colNames[i], '%m/%d/%Y %' + HOUR_FORMAT + ':%M %p').strftime('%Y-%m-%dT%H:%M%S.%f')
-        date = date[:-3]+'Z' 
-        properties['date'] = date # date
+        properties['date'] = reformatDate(colNames[i]) # date
         properties['confirmed'] = cell
         feature = {
           'type': 'Feature',
