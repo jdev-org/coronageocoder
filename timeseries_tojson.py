@@ -51,7 +51,7 @@ def createJsonFeatures(line, colNames):
   }
   geometry = {
     'type':'Point',
-    'coordinates': [line[3], line[4]]
+    'coordinates': [float(line[3]), float(line[4])]
   }
   # create one feature by date
   i = 0
