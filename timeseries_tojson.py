@@ -40,32 +40,35 @@ def reformatDate(value):
         date.hour = '00'
   date = date.strftime('%Y-%m-%dT%H:%M:%S.%f')
   date = date[:-3] + 'Z'
+  print('date return:' + date)
   return date
 
 # line to json
 def createJsonFeatures(line, colNames):
   features = []
-  properties = {
-      'state': line[0],
-      'country': line[1]
-  }
-  geometry = {
-    'type':'Point',
-    'coordinates': [float(line[4]), float(line[3])]
-  }
   # create one feature by date
-  i = 0
-  for cell in line:
-      if(i >= 6):
-        properties['date'] = reformatDate(colNames[i]) # date
-        properties['confirmed'] = cell
-        feature = {
-          'type': 'Feature',
-          'geometry': geometry,
-          'properties': properties
-        }
-        features.append(feature)
-      i += 1
+  i = 5
+  # parse each col  
+  while i < len(colNames[5:]):
+    # create feature props
+    properties = {
+      'state': line[0],
+      'country': line[1],
+      'date': reformatDate(colNames[i]),
+      'confirmed': line[i]
+    }
+    geometry = {
+      'type':'Point',
+      'coordinates': [float(line[4]), float(line[3])]
+    }
+    feature = {
+      'type': 'Feature',
+      'geometry': geometry,
+      'properties': properties
+    }
+    print(i)
+    features.append(feature)
+    i += 1
   return features      
 
 urllib.request.urlretrieve(URLTS, INPUTFILE) # GET DATA FROM WEB
