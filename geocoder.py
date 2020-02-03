@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# version: 1.0
+# version: 1.1
 # licence : gpl-3.0 or superior
 # author: Gaetan Bruel
 # email: gaetan.bruel@jdev.fr
