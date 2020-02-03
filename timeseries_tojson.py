@@ -20,7 +20,7 @@ print('DOWNLOAD CSV >>>>>>>>>>>')
 outpathCsv = OUTPUTCSV
 outputPathJson = OUTPUTJSON
 DELIMITER = sys.argv[2]
-URLTS = sys.argv[0]
+URLTS = sys.argv[1]
 finalMsg = 'NO ERROR'
 
 # create base method to create json
