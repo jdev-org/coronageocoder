@@ -55,7 +55,7 @@ try:
       location = geocoder.geocode(cleanAdresse, True, 30)
       # add line to csv
       date = line[2]
-      date = datetime.strptime('01/29/2020 21:00', '%m/%d/%Y %H:%M').strftime('%Y-%m-%dT%H:%M%S.%f')
+      date = datetime.strptime('01/29/2020 21:00', '%m/%d/%Y %I:%M').strftime('%Y-%m-%dT%H:%M%S.%f')
       date = date[:-3]+'Z'
 
       outputData.writerow((line[0], line[1], date, line[3], line[4], line[5], location.latitude, location.longitude))
