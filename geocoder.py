@@ -22,6 +22,7 @@ outpathCsv = OUTPUTCSV
 outputPathJson = OUTPUTJSON
 URL = sys.argv[1]
 DELIMITER = sys.argv[2]
+HOUR_FORMAT = sys.argv[3] #I or H
 urllib.request.urlretrieve(URL, INPUTFILE)
 
 # geocode csv
@@ -58,7 +59,7 @@ try:
       location = geocoder.geocode(cleanAdresse, True, 30)
       # add line to csv
       date = line[2]
-      date = datetime.strptime('01/29/2020 21:00', '%m/%d/%Y %I:%M').strftime('%Y-%m-%dT%H:%M%S.%f')
+      date = datetime.strptime(date, '%m/%d/%Y %' + HOUR_FORMAT + ':%M %p').strftime('%Y-%m-%dT%H:%M%S.%f')
       date = date[:-3]+'Z'
 
       outputData.writerow((line[0], line[1], date, line[3], line[4], line[5], location.latitude, location.longitude))
