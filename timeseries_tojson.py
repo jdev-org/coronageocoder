@@ -108,6 +108,6 @@ finally:
   print('CLOSE FILES >>>>>>>>>>>')
   inputFile.close()
   outputFile.close()
-  print('END SCRIPT WITH ' + finalMsg + '>>>>>>>>>>>')
+  print('END SCRIPT WITH ' + finalMsg + ' >>>>>>>>>>>')
 
 
