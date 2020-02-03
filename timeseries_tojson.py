@@ -109,3 +109,6 @@ finally:
   inputFile.close()
   outputFile.close()
   print('END SCRIPT WITH ' + finalMsg + ' >>>>>>>>>>>')
+  exitValue = datetime.now().strftime('%Y-%m-%dT%H:%M%S.%f')[:-3]+'Z'
+  print('RETURN  >>>>>>>>>>>')
+  sys.exit(exitValue)
