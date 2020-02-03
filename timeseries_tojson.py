@@ -80,7 +80,7 @@ try:
   inputData = csv.reader(inputFile, delimiter = DELIMITER)
   colNames = next(inputData)
   # prepare output csv file
-  outputData = csv.writer(outputFile, delimiter = DELIMITER, lineterminator = '\n')
+  outputData = csv.writer('TS_'+outputFile, delimiter = DELIMITER, lineterminator = '\n')
   # csv header
   outputData.writerow(('state', 'country', 'lat', 'long', 'date', 'confirmed'))
   print('CSV FILE >>>>>>>>>>>')
@@ -97,7 +97,7 @@ try:
       jsonFeatures = createJsonFeatures(line, colNames)
       jsonData['features'].append(jsonFeatures)
   print('JSON FILE >>>>>>>>>>>')
-  with open(OUTPUTJSON, 'w') as outfile:
+  with open('TS_'+OUTPUTJSON, 'w') as outfile:
     json.dump(jsonData, outfile)      
     
 except Exception as inst:
