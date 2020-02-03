@@ -88,7 +88,7 @@ try:
       i = 0
       for cell in line:
         if(i >= 5 and cell != ''):
-          date = datetime.strptime(colNames[i], '%m/%d/%Y %I:%M %p').strftime('%Y-%m-%dT%H:%M%S.%f')
+          date = datetime.strptime(colNames[i], '%m/%d/%Y %I:%M %p').strftime('%Y-%m-%dT%H:%M:%S.%f')
           date = date[:-3]+'Z' 
           outputData.writerow((line[0], line[1], line[3], line[4], date, cell))
         i += 1
