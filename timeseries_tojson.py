@@ -19,8 +19,8 @@ import sys
 print('DOWNLOAD CSV >>>>>>>>>>>')
 outpathCsv = OUTPUTCSV
 outputPathJson = OUTPUTJSON
-DELIMITER = ','
-#URLTS = sys.argv[1]
+DELIMITER = sys.argv[2]
+URLTS = sys.argv[1]
 finalMsg = 'SUCCESS'
 
 # create base method to create json
