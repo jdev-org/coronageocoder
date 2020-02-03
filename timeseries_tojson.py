@@ -8,7 +8,6 @@
 # description : create JSON from time series data https://docs.google.com/spreadsheets/d/1UF2pSkFTURko2OvfHWWlFpDFAr1UxCBA4JLwlSP6KFo
 
 
-from geopy.geocoders import Nominatim
 import urllib.request
 import csv, json
 from config import *
