@@ -6,6 +6,9 @@
 # email: gaetan.bruel@jdev.fr
 # date: 29/01/2020
 # description : a geocoder according to this data https://docs.google.com/spreadsheets/d/1yZv9w9zRKwrGTaR-YzmAqMefw4wMlaXocejdxZaTs6w 
+# change : 
+#   replace source csv byhttps://docs.google.com/spreadsheets/d/1wQVypefm946ch4XDp37uZ-wartW4V7ILdg-qYiDXUHM
+#   change date format to read PM/AM
 
 from geopy.geocoders import Nominatim
 import urllib.request
