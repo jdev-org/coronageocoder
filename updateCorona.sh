@@ -2,6 +2,14 @@
 
 #!/bin/sh
 
+###################################################################
+#Script Name	: updateCorona
+#Description	: trigger python script and  push data into database
+#Args           :                                                                                           
+#Author       	:Gaetan B, Pierre J
+#Email         	:jdev.fr                                           
+###################################################################
+
 echo "***START SCRIPT***"
 
 lastDate=""
@@ -51,4 +59,3 @@ else
 fi
 
 echo "***END SCRIPT***"
-
