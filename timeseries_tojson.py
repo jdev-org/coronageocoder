@@ -21,7 +21,7 @@ outpathCsv = OUTPUTCSV
 outputPathJson = OUTPUTJSON
 DELIMITER = sys.argv[2]
 URLTS = sys.argv[1]
-finalMsg = 'NO ERROR'
+finalMsg = 'SUCCESS'
 
 # create base method to create json
 def createJson():
