@@ -19,8 +19,8 @@ import sys
 print('DOWNLOAD CSV >>>>>>>>>>>')
 outpathCsv = OUTPUTCSV
 outputPathJson = OUTPUTJSON
-DELIMITER = sys.argv[2]
-URLTS = sys.argv[1]
+#DELIMITER = sys.argv[2]
+#URLTS = sys.argv[1]
 finalMsg = 'SUCCESS'
 
 # create base method to create json
@@ -51,7 +51,7 @@ def createJsonFeatures(line, colNames):
   }
   geometry = {
     'type':'Point',
-    'coordinates': [float(line[3]), float(line[4])]
+    'coordinates': [float(line[4]), float(line[3])]
   }
   # create one feature by date
   i = 0
@@ -82,7 +82,7 @@ try:
   # prepare output csv file
   outputData = csv.writer(outputFile, delimiter = DELIMITER, lineterminator = '\n')
   # csv header
-  outputData.writerow(('state', 'country', 'lat', 'long', 'date', 'confirmed'))
+  outputData.writerow(('state', 'country', 'long', 'lat', 'date', 'confirmed'))
   print('CSV FILE >>>>>>>>>>>')
   for line in inputData:
       # CSV
