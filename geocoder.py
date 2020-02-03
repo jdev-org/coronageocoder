@@ -65,7 +65,7 @@ try:
       date = datetime.strptime(date, formatDate)
       if date.hour == 12 and ampm == 'AM':
             date.hour = '00'
-      date = date.strftime('%Y-%m-%dT%H:%M%S.%f')
+      date = date.strftime('%Y-%m-%dT%H:%M:%S.%f')
       date = date[:-3]+'Z'
 
       outputData.writerow((line[0], line[1], date, line[3], line[4], line[5], location.latitude, location.longitude))

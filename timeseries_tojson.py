@@ -19,8 +19,8 @@ import sys
 print('DOWNLOAD CSV >>>>>>>>>>>')
 outpathCsv = OUTPUTCSV
 outputPathJson = OUTPUTJSON
-DELIMITER = sys.argv[2]
-URLTS = sys.argv[1]
+DELIMITER = ','
+#URLTS = sys.argv[1]
 finalMsg = 'SUCCESS'
 
 # create base method to create json
@@ -38,7 +38,7 @@ def reformatDate(value):
   date = datetime.strptime(value, formatDate)
   if date.hour == 12 and ampm == 'AM':
         date.hour = '00'
-  date = date.strftime('%Y-%m-%dT%H:%M%S.%f')
+  date = date.strftime('%Y-%m-%dT%H:%M:%S.%f')
   date = date[:-3] + 'Z'
   return date
 
