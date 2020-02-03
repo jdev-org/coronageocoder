@@ -40,22 +40,19 @@ def reformatDate(value):
         date.hour = '00'
   date = date.strftime('%Y-%m-%dT%H:%M:%S.%f')
   date = date[:-3] + 'Z'
-  print('date return:' + date)
   return date
 
 # line to json
 def createJsonFeatures(line, colNames):
   features = []
-  # create one feature by date
-  i = 5
-  # parse each col  
-  while i < len(colNames[5:]):
-    # create feature props
+  c = 5
+  cols = colNames[c:]
+  for name in cols:
     properties = {
       'state': line[0],
       'country': line[1],
-      'date': reformatDate(colNames[i]),
-      'confirmed': line[i]
+      'date': reformatDate(name),
+      'confirmed': line[c]
     }
     geometry = {
       'type':'Point',
@@ -66,10 +63,9 @@ def createJsonFeatures(line, colNames):
       'geometry': geometry,
       'properties': properties
     }
-    print(i)
     features.append(feature)
-    i += 1
-  return features      
+    c = c + 1
+  return features    
 
 urllib.request.urlretrieve(URLTS, INPUTFILE) # GET DATA FROM WEB
 
@@ -113,5 +109,3 @@ finally:
   inputFile.close()
   outputFile.close()
   print('END SCRIPT WITH ' + finalMsg + ' >>>>>>>>>>>')
-
-
