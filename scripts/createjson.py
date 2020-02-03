@@ -82,6 +82,7 @@ def getLocation(line) :
 def csvToJson(fPath, delimiter):
   inputFile = open(fPath, 'rt')      
   inputData = csv.reader(inputFile, delimiter = delimiter)
+  outputData = csv.writer(outputFile, delimiter = ',', lineterminator = '\n')
   colNames = next(inputData)
   for line in inputData:
     location = getLocation(line)
