@@ -30,6 +30,8 @@ def createJson():
 
 def reformatDate(value):
   formatDate = '%m/%d/%Y %I:%M'
+  if '2020' not in value:
+        formatDate = '%m/%d/%y %H:%M'
   ampm = value[-2:].upper()
   if ampm == 'AM' or ampm == 'PM':
     formatDate += ' %p'  
@@ -46,23 +48,23 @@ def createJsonFeatures(line, colNames):
   c = 5
   cols = colNames[c:]
   for name in cols:
-    properties = {
-      'state': line[0],
-      'country': line[1],
-      'date': reformatDate(name),
-      'confirmed': line[c]
-    }
-    geometry = {
-      'type':'Point',
-      'coordinates': [float(line[4]), float(line[3])]
-    }
-    feature = {
-      'type': 'Feature',
-      'geometry': geometry,
-      'properties': properties
-    }
-    features.append(feature)
-    c = c + 1
+      properties = {
+        'state': line[0],
+        'country': line[1],
+        'date': reformatDate(name),
+        'confirmed': line[c]
+      }
+      geometry = {
+        'type':'Point',
+        'coordinates': [float(line[4]), float(line[3])]
+      }
+      feature = {
+        'type': 'Feature',
+        'geometry': geometry,
+        'properties': properties
+      }
+      features.append(feature)
+      c = c + 1
   return features    
 
 urllib.request.urlretrieve(URLTS, INPUTFILE) # GET DATA FROM WEB
@@ -85,9 +87,7 @@ try:
       i = 0
       for cell in line:
         if(i >= 5 and cell != ''):
-          date = datetime.strptime(colNames[i], '%m/%d/%Y %I:%M %p').strftime('%Y-%m-%dT%H:%M:%S.%f')
-          date = date[:-3]+'Z' 
-          outputData.writerow((line[0], line[1], line[3], line[4], date, cell))
+          outputData.writerow((line[0], line[1], line[3], line[4], reformatDate(colNames[i]), cell))
         i += 1
       # JSON
       jsonFeatures = createJsonFeatures(line, colNames)
