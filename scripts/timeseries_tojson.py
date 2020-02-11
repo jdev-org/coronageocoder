@@ -56,7 +56,7 @@ def createJsonFeatures(line, colNames):
       }
       geometry = {
         'type':'Point',
-        'coordinates': [float(line[4]), float(line[3])]
+        'coordinates': [float(line[3]), float(line[2])]
       }
       feature = {
         'type': 'Feature',
@@ -87,7 +87,7 @@ try:
       i = 0
       for cell in line:
         if(i >= 5 and cell != ''):
-          outputData.writerow((line[0], line[1], line[3], line[4], reformatDate(colNames[i]), cell))
+          outputData.writerow((line[0], line[1], line[2], line[3], reformatDate(colNames[i]), cell))
         i += 1
       # JSON
       jsonFeatures = createJsonFeatures(line, colNames)
