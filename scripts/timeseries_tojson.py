@@ -34,8 +34,14 @@ def reformatDate(value):
         formatDate = '%m/%d/%y %H:%M'
   ampm = value[-2:].upper()
   if ampm == 'AM' or ampm == 'PM':
-    formatDate += ' %p'  
-  date = datetime.strptime(value, formatDate)
+    formatDate += ' %p'
+  try :
+    date = datetime.strptime(value, formatDate)
+  except:
+    date = datetime.strptime(value, '%m/%d/%y')
+  else:
+    print('Wrong date format !')
+  
   if date.hour == 12 and ampm == 'AM':
         date.hour = '00'
   date = date.strftime('%Y-%m-%dT%H:%M:%S.%f')
