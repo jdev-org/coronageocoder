@@ -17,7 +17,7 @@ FILE=./date.txt
 
 ### python args
 SCRIPT=./scripts/timeseries_tojson.py
-URL="https://docs.google.com/spreadsheets/d/1UF2pSkFTURko2OvfHWWlFpDFAr1UxCBA4JLwlSP6KFo/export?format=csv"
+URL="https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series/time_series_19-covid-Confirmed.csv"
 DELIMITER=","
 
 ### OGR options
