@@ -4,15 +4,29 @@
 GPL-3.0
 
 ## Description
+
+### /scripts/old/geojson.py
 Allow to geocode data provided by [John Hopkins University](https://systems.jhu.edu/) CSSE :
 
-https://docs.google.com/spreadsheets/d/1yZv9w9zRKwrGTaR-YzmAqMefw4wMlaXocejdxZaTs6w/
+https://github.com/CSSEGISandData/COVID-19
 
 Use loop to get location from Nominatim API :
 
 https://nominatim.openstreetmap.org/
 
 Nominatim is free and open source !
+
+### /scripts/ogr2ogr
+Need ogr2ogr, postgres.
+
+Download time series file frome source and create CSV and JSON for confirmed cases only.
+
+User updateCorona.sh file to trigger action and populate DB directly with ogr2ogr.
+
+### /scripts/sql
+Need Posgtres, SQLAlchemy, GeoAlchemy2.
+
+Download confirmed, deaths, recovered time series and insert data to DB directly.
 
 ## Config ogr2ogr
 Read and change params : 
