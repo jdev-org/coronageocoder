@@ -16,7 +16,7 @@ lastDate=""
 FILE=./date.txt
 
 ### python args
-SCRIPT=./scripts/timeseries_tojson.py
+SCRIPT=./scripts/ogr2ogr/timeseries_tojson.py
 URL="https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series/time_series_19-covid-Confirmed.csv"
 DELIMITER=","
 
