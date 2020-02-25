@@ -9,3 +9,13 @@ URL_RECOVERED = 'https://raw.githubusercontent.com/CSSEGISandData/COVID-19/maste
 PATH_CONFIRMED = 'download/confirmed.csv'
 PATH_DEATHS = 'download/deaths.csv'
 PATH_RECOVERED = 'download/revocered.csv'
+
+# DB
+TABLE = 'covid19'
+SCHEMA = 'geoserver'
+HOST = ''
+PORT = 
+SGBD = ''
+DB = ''
+USER = ''
+PASSWORD = ''
