@@ -10,11 +10,11 @@
 
 import urllib.request
 import csv, json
-from config import *
 from datetime import datetime
 import sys
+# local files
+from config import *
 from pgsql import *
-from importlib.util import spec_from_file_location, module_from_spec
 
 finalMsg = 'SUCCESS'
 
@@ -40,9 +40,9 @@ try:
   recovered_cols = next(recovered_data)
 
   # connect to database
-  engine = connect('postgresql', 'geoserver', 'geoServer20', 'localhost', 5432, 'corona')
+  engine = connect(SGBD, USER, PASSWORD, HOST, PORT, DB)
   session = prepareSession(engine)
-  Case = sqlTable(engine, 'datacorona', 'geoserver')
+  Case = sqlTable(engine, TABLE, SCHEMA)
 
   # parse and send to database
   for confirmed in confirmed_data:
