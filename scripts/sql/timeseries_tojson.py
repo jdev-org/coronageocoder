@@ -14,9 +14,8 @@ from config import *
 from datetime import datetime
 import sys
 from pgsql import *
+from importlib.util import spec_from_file_location, module_from_spec
 
-#DELIMITER = sys.argv[2]
-#URLTS = sys.argv[1]
 finalMsg = 'SUCCESS'
 
 # get source from web
